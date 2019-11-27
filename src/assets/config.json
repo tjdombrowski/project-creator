@@ -1,3 +1,6 @@
 {
-    "dbHandler": "db/dbHandler.php"
+    "dbInfo": "db/dbInfo.php",
+    "ProjectHandler": "db/ProjectHandler.php",
+    "ProjectTaskHandler": "db/ProjectTaskHandler.php",
+    "TaskHandler": "db/TaskHandler.php"
   }
