@@ -13,4 +13,6 @@ export class DataHandlerService {
   getConfig() {
     return this.http.get(this.configUrl);
   }
+
+ 
 }
