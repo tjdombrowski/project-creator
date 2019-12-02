@@ -21,7 +21,7 @@ switch ($httpVerb) {
     case 'POST':
         $newProjectData = json_decode(file_get_contents("php://input"));
 
-        $name $newProjectData->name;
+        $name = $newProjectData->name;
 
         $projectHandler->addProject($name);
         break;
