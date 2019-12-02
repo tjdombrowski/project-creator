@@ -19,23 +19,25 @@ switch ($httpVerb) {
         
         break;
     case 'POST': 
-        $description = $_POST['description'];
+        $newTaskData = json_decode(file_get_contents("php://input"));
+
+        $description = $newTaskData->description;
 
         $taskHandler->addTask($description);
 
         break;
     case 'PUT':
-        parse_str(file_get_contents("php://input"), $updatedData);
+        $updatedTaskData = json_decode(file_get_contents("php://input"));
 
-        $id = $updatedData['id'];
-        $description = $updatedData['id'];
+        $id = $updatedTaskData->id;
+        $description = $updatedTaskData->description;
 
         $taskHandler->updateTask($id, $description);
 
         break;
     case 'DELETE':
-        parse_str(file_get_contents("php://input"), $taskId);
-        $id = $taskId['id'];
+        $deletedTaskData = json_decode(file_get_contents("php://input"));
+        $id = $deletedTaskData->id;
 
         $taskHandler->deleteTask($id);
 
