@@ -48,6 +48,27 @@ class TaskHandler {
         }
     }
 
+    public function updateTaskCompletionStatus($taskId, $completion) {
+        $newCompletionStatus = 0; //false by default
+
+        if ($completion) {
+            $newCompletionStatus = 1;
+        }
+
+        $db = new PDO(DB_INFO, USER, PASS);
+
+        $sql = "UPDATE task SET completion = :completion WHERE id = :id";
+
+        try {
+            $query = $db->prepare($sql);
+            $query->bindParam(":completion", $newCompletionStatus);
+            $query->bindParam(":id", $taskId);
+            $query->execute();
+        } catch(Ex $ex) {
+            echo "<div>{$ex->getMessage()}</div>";
+        }
+    }
+
     public function readAll() {
         $db = new PDO(DB_INFO, USER, PASS);
 

@@ -30,7 +30,9 @@ switch ($httpVerb) {
         $updatedTaskData = json_decode(file_get_contents("php://input"));
 
         $id = $updatedTaskData->id;
+
         $description = $updatedTaskData->description;
+        //TODO add ability to update completion status
 
         $taskHandler->updateTask($id, $description);
 
